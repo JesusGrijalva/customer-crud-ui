@@ -1,0 +1,5 @@
+<button mat-icon-button (click)="add()" class="add-button" matTooltip="Add">
+    <mat-icon>add_circle</mat-icon> Customer
+</button>
+
+<app-table [dataSource]="dataSource" [tableDefinition]="tableDefinition" [isLoading]="isLoading" (editEvent)="edit($event)" (deleteEvent)="delete($event)"></app-table>

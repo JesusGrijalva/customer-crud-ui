@@ -1,0 +1,33 @@
+<h3 mat-dialog-title>{{ dialogTitle }}</h3>
+
+<form [formGroup]="customerForm" (ngSubmit)="submitForm()">
+    <div style="position: relative">
+        <mat-form-field class="input-full-width" appearance="outline">
+            <mat-label for="firstName">First Name:</mat-label>
+            <input matInput type="text" cdkFocusInitial formControlName="firstName" name="firstName" />
+            <mat-error *ngIf="customerForm.get('firstName')?.hasError('required')">This field is required</mat-error>
+        </mat-form-field>
+       
+    </div>
+    <div>
+        <mat-form-field class="input-full-width" appearance="outline">
+            <mat-label for="lastName">Last Name:</mat-label>
+            <input matInput type="text" cdkFocusInitial formControlName="lastName" name="lastName" />
+            <mat-error *ngIf="customerForm.get('lastName')?.hasError('required')">This field is required</mat-error>
+        </mat-form-field>
+        
+    </div>
+    <div>
+        <mat-form-field class="input-full-width" appearance="outline">
+            <mat-label for="email">Email:</mat-label>
+            <input matInput type="email" cdkFocusInitial formControlName="email" name="email" />
+            <mat-error *ngIf="customerForm.get('email')?.hasError('required')">This field is required</mat-error>
+            <mat-error *ngIf="customerForm.get('email')?.hasError('email')">This is not a valid email</mat-error>
+        </mat-form-field>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button mat-dialog-close>cancel</button>
+        <button mat-stroked-button color="primary" type="submit" [disabled]="customerForm.invalid">{{isUpdate ? 'Update' : 'Save'}} </button>
+    </mat-dialog-actions>
+</form>
+  
